@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   
+   
+    <environment include="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/Css/site.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+            <a class="navbar-brand" asp-controller="home" asp-action="index">
+                <img src="~/images/Hearts.png" width="30" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav" id="menu">
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Start" href="#">Start</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Shuffle" href="#">Shuffle</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="home" asp-action="index"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Hearts" href="#">Hearts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Clubs" href="#">Clubs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Diamonds" href="#">Diamonds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-page="Spades" href="#">Spades</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+                integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+                crossorigin="anonymous"></script>
+        <script src="~/Js/DeckScript.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: false)
+    }
+</body>
+</html>
